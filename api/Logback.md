@@ -81,5 +81,19 @@
         <appender-ref ref="fileAppender"/>
         <appender-ref ref="STDOUT"/>
     </root>
+    
+    <!--日志异步到数据库 -->  
+    <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+        <!--日志异步到数据库 --> 
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+           <!--连接池 --> 
+           <dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+              <driverClass>com.mysql.jdbc.Driver</driverClass>
+              <url>jdbc:mysql://127.0.0.1:3306/databaseName</url>
+              <user>root</user>
+              <password>root</password>
+            </dataSource>
+        </connectionSource>
+    </appender>
 </configuration>
 ```
